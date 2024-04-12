@@ -38,7 +38,7 @@ class Application extends StatelessWidget {
               text1,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: textGrey,
+                color: getTextColor(text1),
                 fontSize: 26,
               ),
             ),
@@ -57,7 +57,7 @@ class Application extends StatelessWidget {
               text2,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: textGrey,
+                color: getTextColor(text2),
                 fontSize: 26,
               ),
             ),
@@ -77,7 +77,7 @@ class Application extends StatelessWidget {
               text3,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: textGrey,
+                color: getTextColor(text3),
                 fontSize: 26,
               ),
             ),
@@ -97,7 +97,7 @@ class Application extends StatelessWidget {
               text4,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: textGrey,
+                color: getTextColor(text4),
                 fontSize: 26,
               ),
             ),
@@ -160,6 +160,14 @@ class Application extends StatelessWidget {
       return backgroundGreyDark;
     } else {
       return backgroundGrey;
+    }
+  }
+
+  Color getTextColor(String text) {
+    if (isOperator(text)) {
+      return textGreen;
+    } else {
+      return textGrey;
     }
   }
 }

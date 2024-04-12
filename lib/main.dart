@@ -47,7 +47,14 @@ class _CalculatorAppState extends State<CalculatorApp> {
             backgroundColor: getBackgroundColor(text1),
           ),
           onPressed: () {
-            buttomPressed(text1);
+            if (text1 == 'ac') {
+              setState(() {
+                inputUser = '';
+                result = '';
+              });
+            } else {
+              buttomPressed(text1);
+            }
           },
           child: Padding(
             padding: const EdgeInsets.all(3.0),

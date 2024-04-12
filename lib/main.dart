@@ -78,7 +78,15 @@ class _CalculatorAppState extends State<CalculatorApp> {
             ),
           ),
           onPressed: () {
-            buttomPressed(text2);
+            if (text2 == 'ce') {
+              setState(() {
+                if (inputUser.isNotEmpty) {
+                  inputUser = inputUser.substring(0, inputUser.length - 1);
+                }
+              });
+            } else {
+              return buttomPressed(text2);
+            }
           },
         ),
         TextButton(
@@ -151,7 +159,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
                         style: const TextStyle(
                           fontSize: 36,
                           fontWeight: FontWeight.bold,
-                          color: textGreen, 
+                          color: textGreen,
                         ),
                       ),
                     )

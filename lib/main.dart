@@ -25,6 +25,12 @@ class Application extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         TextButton(
+          style: TextButton.styleFrom(
+            shape: const CircleBorder(
+              side: BorderSide(width: 0, color: Colors.transparent),
+            ),
+            backgroundColor: getBackgroundColor(text1),
+          ),
           onPressed: () {},
           child: Padding(
             padding: const EdgeInsets.all(3.0),
@@ -39,6 +45,12 @@ class Application extends StatelessWidget {
           ),
         ),
         TextButton(
+          style: TextButton.styleFrom(
+            shape: const CircleBorder(
+              side: BorderSide(width: 0, color: Colors.transparent),
+            ),
+            backgroundColor: getBackgroundColor(text2),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: Text(
@@ -53,6 +65,12 @@ class Application extends StatelessWidget {
           onPressed: () {},
         ),
         TextButton(
+          style: TextButton.styleFrom(
+            shape: const CircleBorder(
+              side: BorderSide(width: 0, color: Colors.transparent),
+            ),
+            backgroundColor: getBackgroundColor(text3),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: Text(
@@ -67,6 +85,12 @@ class Application extends StatelessWidget {
           onPressed: () {},
         ),
         TextButton(
+          style: TextButton.styleFrom(
+            shape: const CircleBorder(
+              side: BorderSide(width: 0, color: Colors.transparent),
+            ),
+            backgroundColor: getBackgroundColor(text4),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: Text(
@@ -104,12 +128,7 @@ class Application extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    getRow(
-                      'ac',
-                      'ce',
-                      '%',
-                      '/',
-                    ),
+                    getRow('ac', 'ce', '%', '/'),
                     getRow('7', '8', '9', '*'),
                     getRow('4', '5', '6', '-'),
                     getRow('1', '2', '3', '+'),
@@ -122,5 +141,25 @@ class Application extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool isOperator(String text) {
+    List<String> list = ['ac', 'ce', '%', '/', '*', '-', '+', '='];
+
+    for (var item in list) {
+      if (text == item) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  Color getBackgroundColor(String text) {
+    if (isOperator(text)) {
+      return backgroundGreyDark;
+    } else {
+      return backgroundGrey;
+    }
   }
 }

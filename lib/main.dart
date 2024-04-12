@@ -12,13 +12,26 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Application(),
+      home: CalculatorApp(),
     );
   }
 }
 
-class Application extends StatelessWidget {
-  const Application({super.key});
+class CalculatorApp extends StatefulWidget {
+  const CalculatorApp({super.key});
+
+  @override
+  State<CalculatorApp> createState() => _CalculatorAppState();
+}
+
+class _CalculatorAppState extends State<CalculatorApp> {
+  String inputUser = '';
+
+  void buttomPressed(String text) {
+    setState(() {
+      inputUser = inputUser + text;
+    });
+  }
 
   Widget getRow(String text1, String text2, String text3, String text4) {
     return Row(
@@ -31,7 +44,9 @@ class Application extends StatelessWidget {
             ),
             backgroundColor: getBackgroundColor(text1),
           ),
-          onPressed: () {},
+          onPressed: () {
+            buttomPressed(text1);
+          },
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: Text(
@@ -62,7 +77,9 @@ class Application extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            buttomPressed(text2);
+          },
         ),
         TextButton(
           style: TextButton.styleFrom(
@@ -82,7 +99,9 @@ class Application extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            buttomPressed(text3);
+          },
         ),
         TextButton(
           style: TextButton.styleFrom(
@@ -102,7 +121,9 @@ class Application extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            buttomPressed(text4);
+          },
         ),
       ],
     );
@@ -119,6 +140,23 @@ class Application extends StatelessWidget {
               flex: 3,
               child: Container(
                 color: backgroundGreyDark,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        inputUser,
+                        textAlign: TextAlign.end,
+                        style: const TextStyle(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                          color: textGreen, 
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Expanded(
